@@ -1,5 +1,11 @@
 const readOrdersLineItems = async (req, res, next) => {
-  const ordersLineItems = await req.context.models.ordersLineItems.findAll();
+  const ordersLineItems = await req.context.models.ordersLineItems.findAll({
+      include : [
+          {model : req.context.models.orders},
+          {model : req.context.models.product}
+        
+        ]
+  });
   return res.send(ordersLineItems);
 };
 

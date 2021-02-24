@@ -20,4 +20,10 @@ const Status = (sequelize, DataTypes)=> {
         },
       ]
     });
+
+    Status.associatee = models =>{
+      Status.hasMany(models.orders,{foreignKey:'order_state_name'})
+    }
+    return Status;
   };
+  export default Status;

@@ -4,7 +4,13 @@
 // };
 
 const readOrders = async (req, res, next) => {
-  const orders = await req.context.models.orders.findAll();
+  const orders = await req.context.models.orders.findAll({
+      include : [
+          {model : req.context.models.account},
+          {model : req.context.models.status},
+          {model : req.context.models.ordersLineItems}
+      ]
+  });
   return res.send(orders);
 };
 

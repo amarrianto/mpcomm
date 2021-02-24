@@ -1,4 +1,4 @@
-const Product = (sequeliz, DataTypes)=>{
+const Product = (sequelize, DataTypes)=>{
     const Product = sequelize.define('product', {
         prod_id: {
           type: DataTypes.INTEGER,
@@ -20,6 +20,10 @@ const Product = (sequeliz, DataTypes)=>{
           },
         ]
       });
+      Product.associate = models =>{
+
+        Product.hasMany(models.ordersLineItems,{foreignKey:'orit_prod_id'})
+      }
       return Product;
 }
 export default Product;

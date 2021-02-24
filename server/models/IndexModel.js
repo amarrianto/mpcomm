@@ -1,6 +1,7 @@
 //1. import module sequelize agar bisa create connection ke postgresdb
 import Sequelize from 'sequelize';
 import config from '../../config/config'
+import Account from './account.model';
 
 console.log
 
@@ -28,7 +29,10 @@ const models = {
   // Regions: sequelize.import('./RegionModel'),
 
   orders : sequelize.import('./orders.model'),
-  ordersLineItems : sequelize.import('./ordersLineItems.model')
+  ordersLineItems : sequelize.import('./ordersLineItems.model'),
+  product : sequelize.import('./product.model'),
+  account : sequelize.import('./account.model'),
+  status : sequelize.import('./status.model')
 };
 
 //4. create relation OneToMany | ManyToMany

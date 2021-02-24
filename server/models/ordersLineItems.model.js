@@ -1,3 +1,4 @@
+import models from "./IndexModel";
 const ordersLineItems = (sequelize, DataTypes) => {
     const ordersLineItems = sequelize.define('orders_line_items', {
         orit_id: {
@@ -44,6 +45,12 @@ const ordersLineItems = (sequelize, DataTypes) => {
           },
         ]
       });
+
+      ordersLineItems.associate = models =>{
+
+        ordersLineItems.belongsTo(models.product,{foreignKey:'orit_prod_id'})
+        ordersLineItems.belongsTo(models.orders,{foreignKey: 'orit_order_name'})
+      }
       return ordersLineItems;
 }
 export default ordersLineItems;

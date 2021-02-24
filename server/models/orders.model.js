@@ -1,82 +1,91 @@
-const Orders = (sequelize, DataTypes)=>{
-    const Orders = sequelize.define('orders', {
+const Orders = (sequelize, DataTypes) => {
+  const Orders = sequelize.define(
+    "orders",
+    {
       order_name: {
         type: DataTypes.STRING(25),
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
       },
       order_created_on: {
         type: DataTypes.DATE,
-        allowNull: true
+        allowNull: true,
       },
       order_subtotal: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
       },
       order_shipping: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
       },
       order_discount: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
       },
       order_tax: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
       },
       order_total_due: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
       },
       order_total_qty: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
       },
       order_watr_numbers: {
         type: DataTypes.STRING(100),
-        allowNull: true
+        allowNull: true,
       },
       order_is_receive: {
         type: DataTypes.BOOLEAN,
-        allowNull: true
+        allowNull: true,
       },
       order_acco_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
         references: {
-          model: 'account',
-          key: 'acco_id'
-        }
+          model: "account",
+          key: "acco_id",
+        },
       },
       order_stat_name: {
         type: DataTypes.STRING(15),
         allowNull: true,
         references: {
-          model: 'status',
-          key: 'stat_name'
-        }
+          model: "status",
+          key: "stat_name",
+        },
       },
       order_weight: {
         type: DataTypes.INTEGER,
-        allowNull: true
-      }
-    }, {
+        allowNull: true,
+      },
+    },
+    {
       sequelize,
-      tableName: 'orders',
-      schema: 'public',
+      tableName: "orders",
+      schema: "public",
       timestamps: false,
       indexes: [
         {
           name: "orders_pkey",
           unique: true,
-          fields: [
-            { name: "order_name" },
-          ]
+          fields: [{ name: "order_name" }],
         },
-      ]
-    });
-    return Orders;
-}
+      ],
+    }
+  );
+
+  Orders.associate = (models) => {
+    console.log(models);
+    Orders.hasMany(models.ordersLineItems,{foreignKey: 'orit_order_name'})
+    Orders.belongsTo(models.account,{foreignKey: 'order_acco_id' });
+    Orders.belongsTo(models.status,{ foreignKey: 'order_stat_name' });
+  };
+  return Orders;
+};
 
 export default Orders;

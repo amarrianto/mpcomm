@@ -20,6 +20,11 @@ const Account = (sequelize, DataTypes) => {
           },
         ]
       });
+
+      
+    Account.associate = models =>{
+      Account.hasMany(models.orders,{foreignKey:'order_acco_id', onDelete: 'CASCADE'})
+    }
       return Account;
 }
 export default Account;
