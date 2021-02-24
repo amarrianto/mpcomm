@@ -9,10 +9,6 @@ const Orders = (sequelize, DataTypes)=>{
         type: DataTypes.DATE,
         allowNull: true
       },
-      order_status: {
-        type: DataTypes.STRING(15),
-        allowNull: true
-      },
       order_subtotal: {
         type: DataTypes.INTEGER,
         allowNull: true

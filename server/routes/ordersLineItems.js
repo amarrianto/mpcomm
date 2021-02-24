@@ -5,9 +5,9 @@ const router = Router();
 
 router.get('/', ordersLineItemsController.readOrdersLineItems);
 // router.get('/:provId',ordersController.findOrders);
-// router.post('/',ordersController.addOrders);
-// router.put('/:provId',ordersController.editOrders);
-// router.delete('/:provId',ordersController.deleteOrders);
+router.post('/',ordersLineItemsController.addOrdersLineItems);
+router.put('/',ordersLineItemsController.editOrdersLineItems);
+router.delete('/',ordersLineItemsController.deleteOrdersLineItems);
 
 export default router;
 
