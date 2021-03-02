@@ -5,5 +5,6 @@ import ordersLineItems from './ordersLineItems.controller'
 export default {
     // regions
     orders,
-    ordersLineItems
+    ordersLineItems,
+    orderValue
 }

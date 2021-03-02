@@ -20,11 +20,11 @@ const Orders = (sequelize, DataTypes) => {
         allowNull: true,
       },
       order_discount: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.NUMERIC,
         allowNull: true,
       },
       order_tax: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.NUMERIC,
         allowNull: true,
       },
       order_total_due: {
@@ -80,7 +80,7 @@ const Orders = (sequelize, DataTypes) => {
   );
 
   Orders.associate = (models) => {
-    console.log(models);
+    // console.log(models);
     Orders.hasMany(models.ordersLineItems,{foreignKey: 'orit_order_name'})
     Orders.belongsTo(models.account,{foreignKey: 'order_acco_id' });
     Orders.belongsTo(models.status,{ foreignKey: 'order_stat_name' });
