@@ -12,7 +12,8 @@ const sequelize = new Sequelize(
   config.db_password,
   {
     dialect: 'postgres',
-    host: '192.168.100.254'
+    // host: '192.168.100.254' server
+    host : '104.198.212.208'
   },
 );
 
