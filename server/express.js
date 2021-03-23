@@ -11,6 +11,7 @@ import routes from './routes/IndexRoute';
 
 //comment script dibawah before building for production
 import devBundle from './devBundle'
+import ApiOrders from './controllers/ApiOrders'
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
@@ -42,6 +43,7 @@ app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 // app.use('/api/regions', routes.regions);
 app.use('/api/orders',routes.orders);
 app.use('/api/ordersLineItems',routes.ordersLineItems);
+app.use('/api/v1/orders',routes.ApiOrders);
 
 
 

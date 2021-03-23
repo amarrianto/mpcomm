@@ -16,5 +16,14 @@ const getWalletTranscation = async(req,res)=>{
     return transaction;
 }
 
-export default getWalletTranscation;
+const getCarts = async(req,res)=>{
+    const carts = await axios.get('http://192.168.100.33:3003/api/cart/1001/CHECKOUT');
+    console.log(carts)
+    
+    return carts;
+}
+
+export default {getWalletTranscation, getCarts};
+
+
 

@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
   config.db_password,
   {
     dialect: 'postgres',
-    // host: '192.168.100.254'
+    host: '192.168.100.254'
   },
 );
 
@@ -31,8 +31,10 @@ const models = {
   orders : sequelize.import('./orders.model'),
   ordersLineItems : sequelize.import('./ordersLineItems.model'),
   product : sequelize.import('./product.model'),
+  productImages: sequelize.import('./productImages.model'),
   account : sequelize.import('./account.model'),
-  status : sequelize.import('./status.model')
+  status : sequelize.import('./status.model'),
+  address : sequelize.import('./address.model')
 };
 
 //4. create relation OneToMany | ManyToMany

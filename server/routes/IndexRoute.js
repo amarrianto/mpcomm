@@ -5,14 +5,14 @@
 */
 
 
-// import regions from './RegionRoute';
 import orders from './orders';
 import ordersLineItems from './ordersLineItems';
+import ApiOrders from './apiOrders'
 
 
 
 export default {
-  // regions,
   orders,
-  ordersLineItems
+  ordersLineItems,
+  ApiOrders
 };
