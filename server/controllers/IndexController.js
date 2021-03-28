@@ -5,6 +5,7 @@ import address from './address.controller'
 import account from './account.controller'
 import newOrder from './newOrders'
 import ApiOrders from './ApiOrders'
+import ApiCheckoutOrder from './ApiCheckoutOrder'
 
 export default {
     // regions
@@ -13,6 +14,7 @@ export default {
    // orderValue,
     address,
     account,
-    ApiOrders
+    ApiOrders,
+    ApiCheckoutOrder
     // newOrder
 }

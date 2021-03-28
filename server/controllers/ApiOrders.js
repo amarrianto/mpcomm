@@ -23,6 +23,32 @@ const getAddSeller = async (req, res) => {
   return res.send(result);
 };
 
+const filterOrderByStat = async (req, res) => {
+  const result = await sequelize.query(
+    `
+  select prim_path,order_name,acco_id,acco_nama,
+  order_acco_id_seller,(select acco_nama from account where acco_id = order_acco_id_seller) as seller,
+  order_total_due,order_weight,order_created_on,order_stat_name 
+  from account join orders 
+  on acco_id = order_acco_id join cart
+  on acco_id = cart_acco_id join cart_line_items
+  on cart_id = clit_cart_id join product
+  on clit_prod_id = prod_id join product_images
+  on prim_prod_id = prod_id 
+  where acco_id = :acco_id
+  and order_stat_name not in ('CHECKOUT')
+  and order_stat_name = :order_status`,
+    {
+      replacements: { 
+        acco_id: parseInt(req.params.id),
+        order_status: req.params.status
+      },
+      type: sequelize.QueryTypes.SELECT,
+    }
+  );
+  return res.send(result);
+};
+
 const createOrder = async (req, res) => {
   const order_line_items = [];
   const {
@@ -61,7 +87,7 @@ const createOrder = async (req, res) => {
       order_total_qty: order_total_qty,
       order_watr_numbers: order_watr_numbers,
       order_acco_id: order_acco_id,
-      order_stat_name: "PAID",
+      order_stat_name: "CHECKOUT",
       order_weight: order_weight,
       order_acco_id_seller: order_acco_id_seller,
     })
@@ -147,4 +173,5 @@ const getOrderName = (orderSeq) => {
 export default {
   getAddSeller,
   createOrder,
+  filterOrderByStat
 };

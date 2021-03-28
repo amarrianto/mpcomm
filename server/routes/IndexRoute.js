@@ -7,12 +7,14 @@
 
 import orders from './orders';
 import ordersLineItems from './ordersLineItems';
-import ApiOrders from './apiOrders'
+import ApiOrders from './apiOrders';
+import ApiCheckOrder from './apiCheckOrder'
 
 
 
 export default {
   orders,
   ordersLineItems,
-  ApiOrders
+  ApiOrders,
+  ApiCheckOrder
 };
