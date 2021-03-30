@@ -8,7 +8,7 @@ const router = Router();
 
 
 router.get('/', ordersController.readOrders);
-router.get('/:accoId', ordersController.readOrdersById);
+router.get('/:accoId/:statusName', ordersController.readOrdersById);
 // router.get('/:provId',ordersController.findOrders);
 router.post('/',ordersController.addOrders);
 router.put('/',ordersController.editOrders);

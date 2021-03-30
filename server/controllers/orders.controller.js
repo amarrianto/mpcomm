@@ -5,7 +5,11 @@
 
 const readOrdersById = async (req, res, next) => {
   const accoId = req.params.accoId
-  const orders = await req.context.models.orders.findAll({where:{order_acco_id: accoId},
+  const statusName = req.params.statusName
+  const orders = await req.context.models.orders.findAll({where:{
+    order_acco_id: accoId,
+    order_stat_name: statusName,
+  },
       include : [
           {model : req.context.models.account,
            include : {model: req.context.models.address}

@@ -26,7 +26,7 @@ const getAddSeller = async (req, res) => {
 const filterOrderByStat = async (req, res) => {
   const result = await sequelize.query(
     `
-  select prim_path,order_name,acco_id,acco_nama,
+  select prim_path,prod_name,order_name,acco_id,acco_nama,
   order_acco_id_seller,(select acco_nama from account where acco_id = order_acco_id_seller) as seller,
   order_total_due,order_weight,order_created_on,order_stat_name 
   from account join orders 
